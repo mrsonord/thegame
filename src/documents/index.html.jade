@@ -1,0 +1,359 @@
+.container
+  button.btn.btn-success.btn-sm(data-toggle="modal" data-target="#onLoadModal")|Run Initial Modal (It is not automatic because it pops up every time I make a change to the document).
+.modal#onLoadModal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type="button" data-dismiss="modal" aria-hidden="true")|&times;
+        h4#myModalLabel.modal-title|Welcome to Incremental RPG!
+      .modal-body
+        p|This game was developed to teach myself Javascript. I will continue to build this game until I feel that it is finished. For now, have fun!
+        p|Feel free to give me some feedback, suggestions or tips by hitting me up on Twitter
+        a(href="https://twitter.com/_SamuelBeard")|@_SamuelBeard.
+        h3|Name Your Town:
+        input#town.form-control(type="text")
+        h3|Name Your Mayor:
+        input#mayor.form-control(type="text")
+      .modal-footer
+        button#modalClose.btn.btn-success(type="button" data-dismiss="modal")|Done
+.row.header
+  .col-md-12
+    h1|Incremental RPG
+    small| v0.6
+.row
+  .col-md-12
+    h2
+      span#townName
+    h3
+      small|Our Beloved Mayor: 
+      span#mayorName
+.container
+  .row
+    .col-md-6
+      .alert.alert-info.alert-dismissable
+        button.close(data-dismiss="alert" aria-hidden="true" type="button")|&times;
+        strong|Welcome to Incremental RPG!
+        p|To start building your town, click 'Chop Wood', 'Mine Stone' and 'Gather Food' to gather the respective resources.
+      .row
+        .col-xs-4
+           button#chopWood.btn.btn-primary.btn-block(type="button")|Chop Wood
+        .col-xs-4
+          button.btn.btn-default.btn-block.disabled
+            span#woodAmount|0
+            |/
+            span#maxWood|0
+        .col-xs-4
+          span.btn.btn-default.btn-block.disabled
+            span#woodIncrement|0
+            span|/5s
+      .row
+        .col-xs-4
+           button(type="button")#mineStone.btn.btn-primary.btn-block|Gather Stone
+        .col-xs-4
+           button.btn.btn-default.btn-block.disabled
+            span#stoneAmount|0
+            |/
+            span#maxStone|0
+        .col-xs-4
+           span.btn.btn-default.btn-block.disabled
+            span#stoneIncrement|0
+            span|/5s
+      .row
+        .col-xs-4
+           button#gatherFood.btn.btn-primary.btn-block(type="button")|Gather Food
+        .col-xs-4
+           button.btn.btn-default.btn-block.disabled
+            span#foodAmount|0
+            |/
+            span#maxFood|0
+        .col-xs-4
+           span.btn.btn-default.btn-block.disabled
+            span#foodIncrement|0
+            span|/5s
+      .row
+        .col-xs-4
+           button#mineOre.btn.btn-block.btn-primary(type="button")|Mine Ore
+        .col-xs-4
+           button.btn.btn-default.btn-block.disabled
+             span#oreAmount|0
+             |/
+             span#maxOre|0
+        .col-xs-4
+           span.btn.btn-default.btn-block.disabled
+            span#oreIncrement|0
+            span|/5s
+       .row
+         .col-xs-3
+           .btn-group.btn-group-justified.Iron
+             span.btn.btn-default.disabled|Iron
+             span#ironAmount.btn.btn-default.disabled|0
+         .col-xs-3
+           .btn-group.btn-group-justified.copper
+             span.btn.btn-default.disabled|Copper
+             span#copperAmount.btn.btn-default.disabled|0
+         .col-xs-3
+           .btn-group.btn-group-justified.silver
+             span.btn.btn-default.disabled|Silver
+             span#silverAmount.btn.btn-default.disabled|0
+         .col-xs-3
+           .btn-group.btn-group-justified.gold
+             span.btn.btn-default.disabled|Gold
+             span#goldAmount.btn.btn-default.disabled|0
+      hr
+    .col-md-6
+      .alert.alert-info.alert-dismissable
+        button.close(type="button" data-dismiss="alert" aria-hidden="true")|&times;
+        p|Click the buttons below to create workers who will gather resources for you. You will need somewhere for them to live first though.
+      .row
+        .col-xs-6
+          .btn-group.btn-group-justified
+            span.btn.btn-default.disabled|Population
+            span#workerAmount.btn.btn-default.disabled|0
+        .col-xs-6
+          .btn-group.btn-group-justified
+            span.btn.btn-default.disabled|Max
+            span#maxPop.btn.btn-default.disabled|0
+      .row
+        .col-xs-4
+           button#createLumberjack.btn.btn-block.btn-success(type="button")|Create Lumberjack
+        .col-xs-4
+           button#lumberjackAmount.btn.btn-block.btn-default.disabled(type="button")|0
+        .col-xs-4
+           h6|-
+             span#lumberjackCost|10
+             |  Food
+           h6|+1 Lumberjack
+      .row
+        .col-xs-4
+           button#createMiner.btn.btn-block.btn-success(type="button")|Create Miner
+        .col-xs-4
+           button#minerAmount.btn.btn-block.btn-default.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#minerCost|10
+            |  Food
+          h6|+1 Miner
+      .row
+        .col-xs-4
+           button#createHunter.btn.btn-block.btn-success(type="button")|Create Hunter
+        .col-xs-4
+           button#hunterAmount.btn.btn-block.btn-default.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#hunterCost|10
+            |  Food
+          h6|+1 Hunter
+      .row
+        .col-xs-4
+           button#createStonemason.btn.btn-block.btn-success(type="button")|Create Stonemason
+        .col-xs-4
+           button#stonemasonAmount.btn.btn-block.btn-default.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#stonemasonCost|15
+            |  Food
+          h6|+1 Stonemason
+      .row
+        .col-xs-4
+           button#createMetalurgist.btn.btn-block.btn-success(type="button")|Create Metalurgist
+        .col-xs-4
+           button#metalurgistAmount.btn.btn-block.btn-default.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#metalurgistCost|20
+            |  Food
+          h6|+1 Metalurgist
+      hr
+  .row
+    .col-md-6
+      .alert.alert-info.alert-dismissable
+        button.close(type="button" data-dismiss="alert" aria-hidden="true")|&times;
+        p|Use the resources you have gathered to build some accommodation so that you can hire workers.
+        p|Some buildings need to be researched before you are able to build them.
+      .row
+        .col-xs-4
+          button#buildTent.btn.btn-danger.btn-block(type="button")|Build Tent
+        .col-xs-4
+          button#tentAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#tentCostWood|30
+            |  Wood
+          h6|+
+            span#tentResidents|0
+            |  Population
+      .row
+        .col-xs-4
+          button#buildHouse.btn.btn-danger.btn-block(type="button")|Build House
+        .col-xs-4
+          button#houseAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#houseCostWood|0
+            |  Wood  -
+            span#houseCostStone|0
+            |  Stone
+          h6|+
+            span#houseResidents|0
+            |  Population
+      .row
+        .col-xs-4
+          button#researchHostel.btn.btn-danger.btn-block|Consider Building Hostels
+          .progress-wrap.progress.hidden(data-progress-percent="100")
+            span.researchingComment|Thinking About It
+            .progress-bar.progress
+          button#buildHostel.btn.btn-danger.btn-block.hidden|Build Hostel
+        .col-xs-4
+          button#hostelAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6.hostelInfo.hidden
+            span#hostelCostWood|0
+            |  Wood
+            span#hostelCostStone|0
+            |  Stone
+          h6.hostelResearchInfo|-400 Wood -150 Stone
+          h6|+
+            span#hostelResidents|  0
+            |  Population
+      .alert.alert-info.alert-dismissable
+        button.close(type="button" data-dismiss="alert" aria-hidden="true")|&times;
+        p|Build storage houses to store more resources.
+      .row
+        .col-xs-4
+          button#buildWoodStorage.btn.btn-danger.btn-block(type="button")|Build Wood Storage
+        .col-xs-4
+          button#woodStorageAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#woodStorageCostWood|0
+            |  Wood -
+            span#woodStorageCostStone|0
+            |  Stone
+          h6|+100 Wood Storage
+      .row
+        .col-xs-4
+          button#buildStoneStorage.btn.btn-danger.btn-block(type="button")|Build Stone Storage
+        .col-xs-4
+          button#stoneStorageAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#stoneStorageCostWood|0
+            |  Wood -
+            span#stoneStorageCostStone|0
+            |  Stone
+          h6|+100 Stone Storage
+      .row
+        .col-xs-4
+          button#buildFoodStorage.btn.btn-danger.btn-block(type="button")|Build Food Storage
+        .col-xs-4
+          button#foodStorageAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#foodStorageCostWood|0
+            |  Wood -
+            span#foodStorageCostStone|0
+            |  Stone
+          h6|+100 Food Storage
+      .row
+        .col-xs-4
+          button#buildOreStorage.btn.btn-danger.btn-block(type="button")|Build Ore Storage
+        .col-xs-4
+          button#oreStorageAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6|-
+            span#oreStorageCostWood|0
+            |  Wood -
+            span#oreStorageCostStone|0
+            |  Stone -
+            span#oreStorageCostIron|0
+          h6|+100 Ore Storage
+      hr
+      .row
+        .col-xs-4
+          button#researchMetalWorks.btn.btn-danger.btn-block|Consider Building MetalWorks
+          .progress-wrap.progress.hidden(data-progress-percent="100")
+            span.researchingComment|Thinking About It
+            .progress-bar.progress
+          button#buildMetalWorks.btn.btn-danger.btn-block.hidden|Build Metal Works
+        .col-xs-4
+          button#metalWorksAmount.btn.btn-default.btn-block.disabled(type="button")|0
+        .col-xs-4
+          h6.metalWorksInfo.hidden|-
+            span#metalWorksCostWood|
+            |  Wood -
+            span#metalWorksCostStone|0
+            |  Stone -
+            span#metalWorksCostIron|0
+            |  Iron
+          h6#metalWorksResearchInfo|-300 Wood -400 Stone -200 Iron
+          h6|+2 Metalurgist Capacity
+    hr
+    .col-md-6
+      .row#upgradeTwoFingersRow
+        .col-xs-4
+          button#upgradeTwoFingers.btn.btn-warning.btn-block(type="button")|Two Fingers
+        .col-xs-8
+          h6|-100 Wood | -100 Stone | -100 Food
+          h6|Two resources per click.
+      .row#upgradeFiveFingersRow.hidden
+        .col-xs-4
+          button#upgradeFiveFingers.btn.btn-warning.btn-block(type="button")|Five Fingers
+        .col-xs-8
+          h6|-450 Wood | -450 Stone | -120 Food
+          h6|Five resources per click.
+      .row#upgradeDoubleSleepingBagsRow
+        .col-xs-4
+          button#upgradeDoubleSleepingBags.btn.btn-warning.btn-block(type="button")|Double Sleeping Bags
+        .col-xs-8
+          h6|-100 Wood | -100 Stone | -100 Food
+          h6|Allow two people to live in one tent.
+      .row#upgradeBunkBedsRow
+        .col-xs-4
+          button#upgradeBunkBeds.btn.btn-warning.btn-block(type="button")|Bunk Beds
+        .col-xs-8
+          h6|-100 Wood | -100 Stone | -100 Food
+          h6|Allow five people to live in one house.
+      .row#upgradeSharpenAxesRow
+        .col-xs-4
+          button#upgradeSharpenAxes.btn.btn-warning.btn-block(type="button")|Sharpen Axes
+        .col-xs-8
+          h6|-50 Wood | -100 Stone | -50 Food
+          h6|Lumberjacks gather two wood every five seconds.
+      .row#upgradeSharpenPicksRow
+        .col-xs-4
+          button#upgradeSharpenPicks.btn.btn-warning.btn-block(type="button")|Sharpen Picks
+        .col-xs-8
+          h6|-50 Wood | -100 Stone | -50 Food
+          h6|Miners gather two stone every five seconds.
+      .row#upgradeSharpenArrowsRow
+        .col-xs-4
+          button#upgradeSharpenArrows.btn.btn-warning.btn-block(type="button")|Sharpen Arrows
+        .col-xs-8
+          h6|-50 Wood | -100 Stone | -50 Food
+          h6|Hunters gather two food every five seconds.
+      .row#upgradeMatesRatesWoodRow
+        .col-xs-4
+          button#upgradeMatesRatesWood.btn.btn-warning.btn-block(type="button")|Mates Rates - Wood
+        .col-xs-8
+          h6|-150 Stone | -50 Food
+          h6|Befriend the lumberjacks so houses and tents cost less wood.
+      .row#upgradeMatesRatesStoneRow
+        .col-xs-4
+          button#upgradeMatesRatesStone.btn.btn-warning.btn-block(type="button")|Mates Rates - Stone
+        .col-xs-8
+          h6|-150 Wood | -50 Food
+          h6|Befriend the miners so houses cost less stone.
+    hr
+  .row
+    .col-md-6
+      .well
+        h3|Information
+        #info.info
+    .col-md-6
+      .well
+        h3|Upgrades
+        #upgrades.info
+
+  .progress.progress-striped.active
+    .progress-bar(role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%")
+    span.sr-only|45% Complete

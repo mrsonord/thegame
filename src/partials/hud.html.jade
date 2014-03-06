@@ -1,0 +1,43 @@
+.container
+  section#hud.panel.panel-default
+    .panel-body
+      .col-xs-3
+        ul.hudList
+          li|Health:
+            span#playerHealh|  100
+            #healthBar.progress.progress-striped.active.hudBar
+            .progress-bar(role="progressbar" aria-valuenow="100" aria-valuemin="1" aria-valuemax="100")
+          li|Stamina:
+            span#stamina|  100
+            #staminaBar.progress.progress-striped.active.hudBar
+              .progress-bar(role="progressbar" aria-valuenow="100" aria-valuemin="1" aria-valuemax="100")
+          li|Mana:
+            span#playerMana| 100
+            #manaBar.progress.progress-striped.active.hudBar
+              .progress-bar(role="progressbar" aria-valuenow="100" aria-valuemin="1" aria-valuemax="100")
+          li|Time:
+            span#currentTime|  12:00
+       .col-xs-2
+         ul.hudList
+           li|Str:
+             span#charStr|  8
+           li|Dex:
+             span#charDex|  6
+           li|Agi:
+             span#charAgi|  6
+       div-xs-2
+         ul.hudList
+           li|Wis:
+             span#charWis|  4
+           li|Int:
+             span#charInt|  6
+           li|Luck:
+             span#charLuck|  2
+       .div-xs-3
+         ul.hudlist.hudNav
+           li
+             span#inventory.btn.btn-primary|Inventory
+           li
+             span#equipment.btn.btn-primary|Equipment
+           li
+             span#characterSheet.btn.btn-primary|Character
